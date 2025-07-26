@@ -6,7 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { dbSourceOption } from './_db/datasource';
 import { ProductModule } from './product/product.module';
 import { CategoriesModule } from './category/category.module';
-import { MigrationController } from './migration.controller';
+import { HelperModule } from './_helper/helper.module';
 
 @Module({
   imports: [
@@ -14,10 +14,10 @@ import { MigrationController } from './migration.controller';
     TypeOrmModule.forRoot(dbSourceOption),
     ProductModule,
     CategoriesModule,
+    HelperModule,
   ],
   controllers: [
     AppController, 
-    MigrationController,
   ],
   providers: [AppService],
 })
