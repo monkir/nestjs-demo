@@ -11,17 +11,20 @@ export class ProductService {
     @InjectRepository(Product)
     private readonly productRepository: Repository<Product>
   ) { }
-  
+
   async create(createProductDto: CreateProductDto) {
     return await this.productRepository.save(createProductDto);
   }
 
   async findAll() {
-    return await this.productRepository.find();
+    return await this.productRepository.find({ relations: ['Category'] });
   }
 
   async findOne(id: number) {
-    return await this.productRepository.findOneBy({ Id: id });
+    return await this.productRepository.findOne({
+      where: { Id: id },
+      relations: ['Category']
+    });
   }
 
   async update(id: number, updateProductDto: UpdateProductDto) {
