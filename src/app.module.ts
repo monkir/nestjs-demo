@@ -6,6 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { dbSourceOption } from './_db/datasource';
 import { ProductModule } from './product/product.module';
 import { CategoriesModule } from './category/category.module';
+import { MigrationController } from './migration.controller';
 
 @Module({
   imports: [
@@ -14,7 +15,10 @@ import { CategoriesModule } from './category/category.module';
     ProductModule,
     CategoriesModule,
   ],
-  controllers: [AppController],
+  controllers: [
+    AppController, 
+    MigrationController,
+  ],
   providers: [AppService],
 })
 export class AppModule {}
