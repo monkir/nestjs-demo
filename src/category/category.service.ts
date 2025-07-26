@@ -23,7 +23,7 @@ export class CategoriesService {
   async findOne(id: number) {
     return await this.categoryRepository.findOne({
       where: { Id: id },
-      relations: ['products'],
+      relations: ['Products'],
     });
   }
 
