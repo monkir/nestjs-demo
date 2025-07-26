@@ -17,13 +17,15 @@ export class ProductService {
   }
 
   async findAll() {
-    return await this.productRepository.find({ relations: ['Category'] });
+    return await this.productRepository.find({
+      relations: { Category: true },
+    });
   }
 
   async findOne(id: number) {
     return await this.productRepository.findOne({
       where: { Id: id },
-      relations: ['Category']
+      relations: { Category: true },
     });
   }
 
