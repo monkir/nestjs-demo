@@ -1,8 +1,9 @@
 import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { Category } from "./category.entity";
+import { User } from "./user.entity";
 
 @Entity()
-export class Product{
+export class Product {
     @PrimaryGeneratedColumn()
     Id: number;
 
@@ -20,4 +21,7 @@ export class Product{
 
     @ManyToOne(() => Category, category => category.Products)
     Category: Category;
+
+    @ManyToOne(() => User, user => user.Products)
+    User: User;
 }

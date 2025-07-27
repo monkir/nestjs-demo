@@ -1,5 +1,6 @@
-import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { Product } from "./product.entity";
+import { User } from "./user.entity";
 
 @Entity()
 export class Category{
@@ -17,4 +18,7 @@ export class Category{
 
     @OneToMany(() => Product, product => product.Category)
     Products: Product[];
+
+    @ManyToOne(() => User, user => user.Categories)
+    User: User;
 }
