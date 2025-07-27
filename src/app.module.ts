@@ -7,6 +7,8 @@ import { dbSourceOption } from './_db/datasource';
 import { ProductModule } from './product/product.module';
 import { CategoriesModule } from './category/category.module';
 import { HelperModule } from './_helper/helper.module';
+import { AuthModule } from './auth/auth.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -15,6 +17,8 @@ import { HelperModule } from './_helper/helper.module';
     ProductModule,
     CategoriesModule,
     HelperModule,
+    AuthModule,
+    UsersModule,
   ],
   controllers: [
     AppController, 
