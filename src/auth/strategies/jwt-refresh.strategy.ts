@@ -2,15 +2,14 @@ import { Injectable } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { Request } from 'express';
 import { Strategy, ExtractJwt } from 'passport-jwt';
-import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class JwtRefreshStrategy extends PassportStrategy(
   Strategy,
   'jwt-refresh',
 ) {
-  constructor(private configService: ConfigService) {
-    const jwtRefreshSecret = configService.get<string>('JWT_REFRESH_SECRET');
+  constructor() {
+    const jwtRefreshSecret = process.env['JWT_REFRESH_SECRET'];
     if (!jwtRefreshSecret) {
       throw new Error('JWT_REFRESH_SECRET is not configured');
     }
